@@ -1,0 +1,17 @@
+{
+	"schemes": [
+		{
+			"id": "1",
+			"name": "pradip mututal fund",
+			"pricePerUnit": 10,
+			"minimumInvestment": 50
+		},
+		{
+			"id": "2",
+			"name": "samir mututal fund",
+			"pricePerUnit": 10,
+			"minimumInvestment": 50
+		}
+	],
+	"investments": []
+}
