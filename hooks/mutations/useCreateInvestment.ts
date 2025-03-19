@@ -24,7 +24,6 @@ export const useCreateInvestment = () => {
   }
 
   const createInvestment = async (investmentData: Omit<IPurchaseDetails, "id">) => {
-    console.log("investment data",investmentData)
     setStatus(STATUS.LOADING);
     try {
       const response = await fetch(INVESTMENTS, {

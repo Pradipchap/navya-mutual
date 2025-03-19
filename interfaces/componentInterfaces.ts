@@ -7,3 +7,4 @@ export interface ICustomButtonProps extends TouchableOpacityProps {
 	text:string,
 	iconProps:IconProps<string>
 }
+export type TQuery=Record<string,string>

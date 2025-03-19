@@ -11,6 +11,13 @@ const SchemeScreenLayout = () => {
           headerShadowVisible: false
         }}
       />
+      <Stack.Screen
+        name="[id]"
+        options={{
+          header: props => <CommonHeader canGoBack headerIcon={"Money"} headerTitle="Scheme Details" {...props} />,
+          headerShadowVisible: false
+        }}
+      />
     </Stack>
   );
 };

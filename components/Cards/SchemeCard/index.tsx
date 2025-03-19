@@ -4,6 +4,7 @@ import React, { useMemo } from "react";
 import { StyleSheet, Text, TouchableOpacity } from "react-native";
 import { IScheme } from "@/interfaces/dataInterfaces";
 import Icon from "@/components/Icons";
+import { useRouter } from "expo-router";
 
 export const SchemeCard = ({
   name,
@@ -17,8 +18,12 @@ export const SchemeCard = ({
   const handleBuy = () => {
     onPress(id);
   };
+  const router = useRouter();
+  const handlePress = () => {
+    router.navigate(`/(tabs)/schemes/${id}`);
+  };
   return (
-    <View style={styles.container}>
+    <TouchableOpacity onPress={handlePress} style={styles.container}>
       <View style={styles.ppContainer}>
         <Text style={styles.ppUnit}>{pricePerUnit}</Text>
         <Text style={styles.ppLabel}>per</Text>
@@ -39,7 +44,7 @@ export const SchemeCard = ({
           <Icon name="Cart" color={"white"} />
         </TouchableOpacity>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 

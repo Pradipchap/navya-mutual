@@ -1,94 +1,94 @@
 {
-  "schemes": [
-    {
-      "id": "1",
-      "name": "pradip mututal fund",
-      "pricePerUnit": 10,
-      "minimumInvestment": 50
-    },
-    {
-      "id": "2",
-      "name": "samir mututal fund",
-      "pricePerUnit": 10,
-      "minimumInvestment": 50
-    },
-    {
-      "id": "2861",
-      "name": "raaasdfasm",
-      "pricePerUnit": 1000,
-      "minimumInvestment": 30
-    },
-    {
-      "id": "245d",
-      "schemeName": "Hi",
-      "pricePerUnit": "13",
-      "minInvestment": "1000"
-    },
-    {
-      "id": "92f9",
-      "schemeName": "Hi",
-      "pricePerUnit": "13",
-      "minInvestment": "1000"
-    },
-    {
-      "id": "faeb",
-      "schemeName": "SdfasdasA",
-      "pricePerUnit": "34",
-      "minInvestment": "3434"
-    },
-    {
-      "id": "cfb9",
-      "name": "K ax",
-      "pricePerUnit": "444",
-      "minInvestment": "23"
-    },
-    {
-      "id": "5938",
-      "name": "344334",
-      "pricePerUnit": "34",
-      "minimumInvestment": "3434"
-    },
-    {
-      "id": "37cd",
-      "name": "K xa khanar",
-      "pricePerUnit": "1000",
-      "minimumInvestment": "3232"
-    },
-    {
-      "id": "ca89",
-      "name": "Mummy k xa",
-      "pricePerUnit": "3434",
-      "minimumInvestment": "3434"
-    }
-  ],
-  "investments": [
-    {
-      "id": "255f",
-      "name": "pradip mututal fund",
-      "schemeId": "1",
-      "amount": "6660",
-      "units": "666"
-    },
-    {
-      "id": "1ab3",
-      "amount": "43340",
-      "units": "4334",
-      "name": "pradip mututal fund",
-      "schemeId": "1"
-    },
-    {
-      "id": "23c8",
-      "amount": "34340",
-      "units": "3434",
-      "name": "pradip mututal fund",
-      "schemeId": "1"
-    },
-    {
-      "id": "3c0f",
-      "amount": "5000",
-      "units": "500",
-      "name": "samir mututal fund",
-      "schemeId": "2"
-    }
-  ]
+	"schemes": [
+		{
+			"id": "1",
+			"name": "pradip mututal fund",
+			"pricePerUnit": 10,
+			"minimumInvestment": 50
+		},
+		{
+			"id": "2",
+			"name": "samir mututal fund",
+			"pricePerUnit": 10,
+			"minimumInvestment": 50
+		},
+		{
+			"id": "2861",
+			"name": "raaasdfasm",
+			"pricePerUnit": 1000,
+			"minimumInvestment": 30
+		},
+		{
+			"id": "245",
+			"schemeName": "Hi",
+			"pricePerUnit": "13",
+			"minInvestment": "1000"
+		},
+		{
+			"id": "929",
+			"schemeName": "Hi",
+			"pricePerUnit": "13",
+			"minInvestment": "1000"
+		},
+		{
+			"id": "345343",
+			"schemeName": "SdfasdasA",
+			"pricePerUnit": "34",
+			"minInvestment": "3434"
+		},
+		{
+			"id": "34534",
+			"name": "K ax",
+			"pricePerUnit": "444",
+			"minInvestment": "23"
+		},
+		{
+			"id": "5938",
+			"name": "344334",
+			"pricePerUnit": "34",
+			"minimumInvestment": "3434"
+		},
+		{
+			"id": "37",
+			"name": "K xa khanar",
+			"pricePerUnit": "1000",
+			"minimumInvestment": "3232"
+		},
+		{
+			"id": "89",
+			"name": "Mummy k xa",
+			"pricePerUnit": "3434",
+			"minimumInvestment": "3434"
+		}
+	],
+	"investments": [
+		{
+			"id": "255f",
+			"name": "pradip mututal fund",
+			"schemeId": "1",
+			"amount": "6660",
+			"units": "666"
+		},
+		{
+			"id": "1ab3",
+			"amount": "43340",
+			"units": "4334",
+			"name": "pradip mututal fund",
+			"schemeId": "1"
+		},
+		{
+			"id": "23c8",
+			"amount": "34340",
+			"units": "3434",
+			"name": "pradip mututal fund",
+			"schemeId": "1"
+		},
+		{
+			"id": "3c0f",
+			"amount": "5000",
+			"units": "500",
+			"name": "samir mututal fund",
+			"schemeId": "2"
+		}
+	]
 }
