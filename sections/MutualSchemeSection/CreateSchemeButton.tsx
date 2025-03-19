@@ -34,8 +34,7 @@ const getStyles = (theme: ReactNavigation.Theme) => {
     container: {
       flexDirection: "row",
       paddingHorizontal: 10,
-      paddingVertical: 15,
-      minHeight: 50,
+      minHeight: 40,
       alignItems: "center",
       justifyContent: "space-between",
       gap: "5%"

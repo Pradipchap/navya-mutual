@@ -1,47 +1,51 @@
 import { INVESTMENTS } from "@/constants/endpoints";
-import {  IPurchaseDetails } from "@/interfaces/dataInterfaces";
+import { IInvestmentResponse, IPurchaseDetails } from "@/interfaces/dataInterfaces";
 import { create } from "zustand";
 
-type Store = {
+
+type InvestmentStore = {
   investments: IPurchaseDetails[];
   loading: boolean;
   error: string | null;
   pageNo: number;
   hasMore: boolean;
+  totalItems: number;
+  totalPages: number;
+
   fetchInvestments: (page?: number) => Promise<void>;
-  addInvestment: (investment: IPurchaseDetails) => Promise<void>;
   loadMore: () => void;
 };
 
-export const useInvestmentStore = create<Store>((set, get) => ({
+export const useInvestmentStore = create<InvestmentStore>((set, get) => ({
   investments: [],
   loading: false,
   error: null,
   pageNo: 1,
   hasMore: true,
+  totalItems: 0,
+  totalPages: 0,
 
   fetchInvestments: async (page = 1) => {
     if (get().loading) return;
-
     set({ loading: true, error: null });
-
     try {
-      const response = await fetch(`${INVESTMENTS}?_page=${page}&_limit=5`);
+      const response = await fetch(`${INVESTMENTS}?_page=${page}&_per_page=5`);
       if (!response.ok) {
         throw new Error("Failed to fetch investments");
       }
+      const result: IInvestmentResponse = await response.json();
 
-      const data: IPurchaseDetails[] = await response.json();
+      set({
+        totalItems: result.items,
+        totalPages: result.pages,
+        hasMore: result.next !== null,
+      });
 
-      if (data.length === 0) {
-        set({ hasMore: false });
-        return;
-      }
 
+      //conditionally update investments
       set((state) => ({
-        investments: page === 1 ? data : [...state.investments, ...data],
+        investments: page === 1 ? result.data : [...state.investments, ...result.data],
         pageNo: page,
-        hasMore: true,
       }));
     } catch (error) {
       set({ error: "Failed to fetch investments" });
@@ -50,32 +54,12 @@ export const useInvestmentStore = create<Store>((set, get) => ({
     }
   },
 
-  addInvestment: async (investment: IPurchaseDetails) => {
-    set({ loading: true, error: null });
-    try {
-      const response = await fetch(INVESTMENTS, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(investment),
-      });
 
-      if (!response.ok) {
-        throw new Error("Failed to add investment");
-      }
-      const newInvestment: IPurchaseDetails = await response.json();
-      set((state) => ({
-        investments: [...state.investments, newInvestment],
-      }));
-    } catch (error) {
-      set({ error: "Failed to add investment" });
-    } finally {
-      set({ loading: false });
-    }
-  },
-
+  //function to load more investments : automatic pagination
   loadMore: () => {
-    if (get().hasMore) {
-      get().fetchInvestments(get().pageNo + 1);
+    const { hasMore, pageNo } = get();
+    if (hasMore) {
+      get().fetchInvestments(pageNo + 1);
     }
   },
 }));

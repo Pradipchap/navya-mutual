@@ -15,3 +15,15 @@ export interface IPurchase{
 export interface IPurchaseDetails extends IPurchase{
   name:string
 }
+
+export interface IApiResponse<T>{
+	first: number,
+  prev: null|number,
+  next: null|number,
+  last: number,
+  pages: number,
+  items: number,
+	data:T[]
+}
+export type ISchemeResponse=IApiResponse<IScheme>
+export type IInvestmentResponse=IApiResponse<IPurchaseDetails>
