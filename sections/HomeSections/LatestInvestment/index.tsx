@@ -26,10 +26,11 @@ export const LatestInvestment = () => {
         <Text style={{ textAlign: "center", marginVertical: 20 }}>No investments available</Text>
       ) : (
         <FlatList
-          data={investments}
+          data={investments.slice(0, 5)}
           renderItem={renderItem}
           onEndReached={loadMore}
           keyExtractor={item => item.id.toString()}
+          contentContainerStyle={{ paddingVertical: 10, gap: 10 }}
           showsHorizontalScrollIndicator={false}
           ListFooterComponent={loading ? <ActivityIndicator size="small" color="gray" style={{ marginLeft: 15 }} /> : null}
         />

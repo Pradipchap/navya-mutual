@@ -61,5 +61,34 @@
       "minimumInvestment": "3434"
     }
   ],
-  "investments": []
+  "investments": [
+    {
+      "id": "255f",
+      "name": "pradip mututal fund",
+      "schemeId": "1",
+      "amount": "6660",
+      "units": "666"
+    },
+    {
+      "id": "1ab3",
+      "amount": "43340",
+      "units": "4334",
+      "name": "pradip mututal fund",
+      "schemeId": "1"
+    },
+    {
+      "id": "23c8",
+      "amount": "34340",
+      "units": "3434",
+      "name": "pradip mututal fund",
+      "schemeId": "1"
+    },
+    {
+      "id": "3c0f",
+      "amount": "5000",
+      "units": "500",
+      "name": "samir mututal fund",
+      "schemeId": "2"
+    }
+  ]
 }

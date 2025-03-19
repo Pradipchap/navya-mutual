@@ -1,5 +1,6 @@
 import { SchemeCard } from "@/components/Cards/SchemeCard";
 import { SectionWrapper } from "@/components/Wrappers/SectionWrapper";
+import { useOpenCreateInvestment } from "@/hooks/componentHooks/useOpenCreateInvestment";
 import { IScheme } from "@/interfaces/dataInterfaces";
 import { useSchemeStore } from "@/store/useSchemeStore";
 import React, { useEffect } from "react";
@@ -8,8 +9,8 @@ import { Dimensions, FlatList, View, ActivityIndicator, Text } from "react-nativ
 const { width } = Dimensions.get("window");
 
 export const PopularSchemeSection = () => {
-  const { schemes, fetchSchemes, loading ,loadMore} = useSchemeStore();
-
+  const { schemes, fetchSchemes, loading, loadMore } = useSchemeStore();
+  const { openCreateInvestmentModal } = useOpenCreateInvestment();
   useEffect(() => {
     fetchSchemes();
   }, []);
@@ -19,7 +20,12 @@ export const PopularSchemeSection = () => {
   const renderItem = ({ item }: { item: IScheme }) => {
     return (
       <View style={{ height: 120, width: 0.95 * width }}>
-        <SchemeCard onPress={() => {}} {...item} />
+        <SchemeCard
+          onPress={() => {
+            openCreateInvestmentModal(item);
+          }}
+          {...item}
+        />
       </View>
     );
   };
@@ -35,7 +41,7 @@ export const PopularSchemeSection = () => {
           horizontal
           pagingEnabled
           data={schemes}
-					onEndReached={loadMore}
+          onEndReached={loadMore}
           renderItem={renderItem}
           keyExtractor={item => item.id.toString()}
           contentContainerStyle={{ paddingHorizontal: 15, paddingVertical: 10, gap: 5 }}

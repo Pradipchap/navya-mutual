@@ -14,6 +14,7 @@ type InvestmentStore = {
 
   fetchInvestments: (page?: number) => Promise<void>;
   loadMore: () => void;
+  updateInvestments:(newScheme:IPurchaseDetails)=>void
 };
 
 export const useInvestmentStore = create<InvestmentStore>((set, get) => ({
@@ -62,4 +63,7 @@ export const useInvestmentStore = create<InvestmentStore>((set, get) => ({
       get().fetchInvestments(pageNo + 1);
     }
   },
+  updateInvestments:(newInvestment:IPurchaseDetails)=>{
+    set({investments:[newInvestment,...get().investments]})
+  }
 }));
