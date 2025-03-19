@@ -7,7 +7,7 @@ const SchemeScreenLayout = () => {
       <Stack.Screen
         name="index"
         options={{
-          header: props => <CommonHeader headerIcon={"Home"} headerTitle="Scheme" {...props} />,
+          header: props => <CommonHeader canGoBack headerIcon={"Money"} headerTitle="Scheme" {...props} />,
           headerShadowVisible: false
         }}
       />

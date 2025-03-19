@@ -53,6 +53,8 @@ export default function Icon({ name, color, size, style, ...rest }: IconProps<st
       return <Entypo {...rest} name="cross" size={defaultSize} color={defaultColor} style={style} />;
     case "Money":
       return <FontAwesome {...rest} name="money" size={defaultSize} color={defaultColor} style={style} />;
+    case "Investment":
+      return <AntDesign {...rest} name="linechart" size={defaultSize} color={defaultColor} style={style} />;
     default:
       return null;
   }

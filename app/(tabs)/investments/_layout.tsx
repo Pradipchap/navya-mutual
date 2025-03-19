@@ -7,7 +7,7 @@ const InvestmentScreenLayout = () => {
       <Stack.Screen
         name="index"
         options={{
-          header: props => <CommonHeader headerIcon={"Home"} headerTitle="Investment" {...props} />,
+          header: props => <CommonHeader canGoBack headerIcon={"Investment"} headerTitle="Investment" {...props} />,
           headerShadowVisible: false
         }}
       />

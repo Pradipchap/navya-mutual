@@ -35,7 +35,7 @@ export default function TabLayout() {
         name="schemes"
         options={{
           title: "Scheme",
-          tabBarIcon: () => <Icon size={28} name="Home" />
+          tabBarIcon: () => <Icon size={28} name="Money" />
         }}
       />
 
@@ -43,7 +43,7 @@ export default function TabLayout() {
         name="investments"
         options={{
           title: "Investments",
-          tabBarIcon: () => <Icon size={28} name="Home" />
+          tabBarIcon: () => <Icon size={28} name="Investment" />
         }}
       />
     </Tabs>

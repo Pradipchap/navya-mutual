@@ -51,8 +51,8 @@ const styles = StyleSheet.create({
     gap: 10
   },
   avatarContainer: {
-    width: 40,
-    height: 40,
+    width: 45,
+    height: 45,
     borderRadius: 20,
     backgroundColor: "#e0e0e0",
     justifyContent: "center",
@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
     borderRadius: 20
   },
   iconAvatar: {
-    backgroundColor: "#ff5722"
+    backgroundColor: "#ff572278"
   },
   headerTitle: {
     fontSize: 18,
