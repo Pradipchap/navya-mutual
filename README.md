@@ -36,26 +36,31 @@ This project is a simple React Native application that allows users to create mu
 
 `copy the projectId and paste it in expo.extra.eas.projectId   of the app.json`
 
+4.  **Create Development build for your device or simulator**
 
-4.  **Start the Expo development server:**
+[docs to create development build](https://docs.expo.dev/develop/development-builds/create-a-build/)
+
+5. **Install the development build on your device or simulator**
+
+6.  **Start the Expo development server:**
 
     ```bash
     npx expo start
     ```
 
-5. **Start the json-server**
+7. **Start the json-server**
 
 ```
 npm run server
 
 ```
-6. **Use single command to run app and server**
+8. **Use single command to run app and server**
 
 ```
 npm run dev
 ```
 
-4.  **Run the app:**
+9.  **Run the app:**
 
     -   Scan the QR code with the Expo Go app on your mobile device.
     -   Or, run the app in an emulator by pressing `a` (Android) or `i` (iOS) in the terminal.
