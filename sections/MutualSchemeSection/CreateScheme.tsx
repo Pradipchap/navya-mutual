@@ -1,7 +1,6 @@
 import { Button } from "@/components/Buttons";
 import CustomInput from "@/components/Inputs/CustomInput";
 import { useCreateScheme } from "@/hooks/mutations/useCreateScheme";
-import { IScheme } from "@/interfaces/dataInterfaces";
 import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
 
@@ -12,7 +11,7 @@ interface IErrors {
 }
 export const CreateScheme = () => {
   const { status, createScheme } = useCreateScheme();
-  const [formData, setFormData] = useState<Omit<IScheme, "id">>({
+  const [formData, setFormData] = useState<IErrors>({
     name: "",
     pricePerUnit: "",
     minimumInvestment: ""
@@ -28,15 +27,15 @@ export const CreateScheme = () => {
     let valid = true;
     let newErrors = { name: "", pricePerUnit: "", minimumInvestment: "" };
 
-    if (!formData.name.trim()) {
+    if (!formData?.name?.trim()) {
       newErrors.name = "Scheme name is required";
       valid = false;
     }
-    if (!formData.pricePerUnit.trim() || isNaN(Number(formData.pricePerUnit))) {
+    if (!formData?.pricePerUnit?.trim() || isNaN(Number(formData.pricePerUnit))) {
       newErrors.pricePerUnit = "Valid price per unit is required";
       valid = false;
     }
-    if (!formData.minimumInvestment.trim() || isNaN(Number(formData.minimumInvestment))) {
+    if (!formData?.minimumInvestment?.trim() || isNaN(Number(formData.minimumInvestment))) {
       newErrors.minimumInvestment = "Valid minimum investment amount is required";
       valid = false;
     }
@@ -47,7 +46,11 @@ export const CreateScheme = () => {
 
   const handleSubmit = () => {
     if (validate()) {
-      createScheme(formData);
+      createScheme({
+        name: formData?.name || "",
+        pricePerUnit: Number(formData?.pricePerUnit),
+        minimumInvestment: Number(formData?.minimumInvestment)
+      });
     }
   };
 
