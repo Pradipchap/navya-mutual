@@ -24,6 +24,7 @@ type Store = {
   totalPages: number; 
   fetchSchemes: (page?: number) => Promise<void>;
   loadMore: () => void;
+  updateSchemes:(newScheme:IScheme)=>void
 };
 
 export const useSchemeStore = create<Store>((set, get) => ({
@@ -65,8 +66,13 @@ export const useSchemeStore = create<Store>((set, get) => ({
 
   loadMore: () => {
     const { hasMore, pageNo } = get();
+  
     if (hasMore) {
       get().fetchSchemes(pageNo + 1);
     }
   },
+  updateSchemes:(newScheme:IScheme)=>{
+    set({schemes:[newScheme,...get().schemes]})
+  }
+
 }));

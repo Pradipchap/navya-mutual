@@ -17,6 +17,48 @@
       "name": "raaasdfasm",
       "pricePerUnit": 1000,
       "minimumInvestment": 30
+    },
+    {
+      "id": "245d",
+      "schemeName": "Hi",
+      "pricePerUnit": "13",
+      "minInvestment": "1000"
+    },
+    {
+      "id": "92f9",
+      "schemeName": "Hi",
+      "pricePerUnit": "13",
+      "minInvestment": "1000"
+    },
+    {
+      "id": "faeb",
+      "schemeName": "SdfasdasA",
+      "pricePerUnit": "34",
+      "minInvestment": "3434"
+    },
+    {
+      "id": "cfb9",
+      "name": "K ax",
+      "pricePerUnit": "444",
+      "minInvestment": "23"
+    },
+    {
+      "id": "5938",
+      "name": "344334",
+      "pricePerUnit": "34",
+      "minimumInvestment": "3434"
+    },
+    {
+      "id": "37cd",
+      "name": "K xa khanar",
+      "pricePerUnit": "1000",
+      "minimumInvestment": "3232"
+    },
+    {
+      "id": "ca89",
+      "name": "Mummy k xa",
+      "pricePerUnit": "3434",
+      "minimumInvestment": "3434"
     }
   ],
   "investments": []
