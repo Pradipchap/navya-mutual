@@ -23,7 +23,7 @@ export const PopularSchemeSection = () => {
 
   const renderItem = ({ item }: { item: IScheme }) => {
     return (
-      <View style={{ height: 120, width: 0.95 * width }}>
+      <View style={{ paddingHorizontal: 10, width: 0.9 * width }}>
         <SchemeCard
           onPress={() => {
             openCreateInvestmentModal(item);
@@ -48,7 +48,7 @@ export const PopularSchemeSection = () => {
           onEndReached={loadMore}
           renderItem={renderItem}
           keyExtractor={item => item.id.toString()}
-          contentContainerStyle={{ paddingHorizontal: 15, paddingVertical: 10, gap: 5 }}
+          // contentContainerStyle={{ flex: 1, justifyContent: "center", alignItems: "stretch" }}
           showsHorizontalScrollIndicator={false}
           ListFooterComponent={loading ? <ActivityIndicator size="small" color="gray" style={{ marginLeft: 15 }} /> : null}
         />
