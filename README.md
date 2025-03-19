@@ -1,50 +1,96 @@
-# Welcome to your Expo app 👋
+# Simple Mutual Fund System - React Native
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+This project is a simple React Native application that allows users to create mutual fund schemes and purchase units of those schemes.
 
-## Get started
+## Features
 
-1. Install dependencies
+-   **Create a Scheme:** Users can create new mutual fund schemes by providing the scheme name, initial price per unit, and minimum investment amount.
+-   **Purchase Units:** Users can purchase units of existing schemes by specifying the investment amount. The application calculates the number of units purchased based on the price per unit.
+-   **View Schemes & Investments:** Users can view a list of all created schemes and details of their purchased units for each scheme.
 
-   ```bash
-   npm install
-   ```
+## Tech Stack
 
-2. Start the app
+-   React Native (Expo)
+-   React Navigation
+-   Zustand for state management
+-   json-server for server side and data storage
+-   TypeScript
 
-   ```bash
+## Setup and Run
+
+1.  **Clone the repository:**
+
+    ```bash
+    git clone <repository_url>
+    cd <project_directory>
+    ```
+
+2.  **Install dependencies:**
+
+    ```bash
+    npm install
+    # or
+    yarn install
+    ```
+3. **Create Project in expo**
+
+`copy the projectId and paste it in expo.extra.eas.projectId   of the app.json`
+
+
+4.  **Start the Expo development server:**
+
+    ```bash
     npx expo start
-   ```
+    ```
 
-In the output, you'll find options to open the app in a
+5. **Start the json-server**
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+```
+npm run server
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+```
+6. **Use single command to run app and server**
 
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
+```
+npm run dev
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+4.  **Run the app:**
 
-## Learn more
+    -   Scan the QR code with the Expo Go app on your mobile device.
+    -   Or, run the app in an emulator by pressing `a` (Android) or `i` (iOS) in the terminal.
 
-To learn more about developing your project with Expo, look at the following resources:
+## Project Structure
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+-   `assets/`: Contains images and other static assets.
+-   `components/`: Reusable UI components.
+-   `store/`: State management using zustand store.
+-   `_layout.tsx`: Main application entry point.
+-   `app.json`: Expo configuration file.
+-   `package.json`: Project dependencies.
+-   `tsconfig.json`: TypeScript configuration file.
+-   `README.md`: Project documentation.
+-    `hooks/` : Custom hooks
 
-## Join the community
+## State Management
 
-Join our community of developers creating universal apps.
+The application utilizes zustand  for state management. The `store/` provides functions to create schemes, purchase units, and access scheme data.
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+
+## Navigation
+
+React Navigation is used to handle navigation between screens.
+Folder Structure wise navigation is handled by `@react-navigation/native` like in Next JS.
+
+## Additional Features implemented
+
+-   **Form Validation:** Basic form validation is implemented to ensure that required fields are filled and input values are valid.
+-   **Investment Distribution Chart:** A simple pie chart is added to the Scheme Details screen to visualize the investment distribution.
+-   **Dummy API Layer:** A dummy API layer using json-server or Axios with mock data has been added. See the `api` folder for more details.
+
+## Future Improvements
+
+-   Implement more robust error handling.
+-   Add user authentication.
+-   Enhance the UI/UX with more polished designs.
+-   Add test cases.
