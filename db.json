@@ -1,17 +1,29 @@
 {
-	"schemes": [
-		{
-			"id": "1",
-			"name": "pradip mututal fund",
-			"pricePerUnit": 10,
-			"minimumInvestment": 50
-		},
-		{
-			"id": "2",
-			"name": "samir mututal fund",
-			"pricePerUnit": 10,
-			"minimumInvestment": 50
-		}
-	],
-	"investments": []
+  "schemes": [
+    {
+      "id": "1",
+      "name": "pradip mututal fund",
+      "pricePerUnit": 10,
+      "minimumInvestment": 50
+    },
+    {
+      "id": "2",
+      "name": "samir mututal fund",
+      "pricePerUnit": 10,
+      "minimumInvestment": 50
+    },
+    {
+      "id": "2861",
+      "name": "ram",
+      "pricePerUnit": 40,
+      "minimumInvestment": 30
+    },
+    {
+      "id": "2861",
+      "name": "ram",
+      "pricePerUnit": 1000,
+      "minimumInvestment": 30
+    }
+  ],
+  "investments": []
 }
