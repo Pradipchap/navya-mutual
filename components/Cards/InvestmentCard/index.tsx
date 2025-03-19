@@ -4,7 +4,7 @@ import React, { useMemo } from "react";
 import { StyleSheet, Text } from "react-native";
 import { IPurchaseDetails } from "@/interfaces/dataInterfaces";
 
-export const InvestmentCard = ({ name, amount, id, units,onPress }: IPurchaseDetails & { onPress: () => void }) => {
+export const InvestmentCard = ({ name, amount, id, units, onPress }: IPurchaseDetails & { onPress: () => void }) => {
   const theme = useTheme();
   const styles = useMemo(() => getStyles(theme), [theme]);
   return (
@@ -49,10 +49,11 @@ const getStyles = (theme: ReactNavigation.Theme) => {
       justifyContent: "center",
       alignItems: "center",
       height: "100%",
-      backgroundColor: theme.colors.notification,
+      backgroundColor: "green",
       borderBottomStartRadius: 10,
       borderTopStartRadius: 10,
       paddingHorizontal: "5%",
+      width: "25%"
     },
     secondSection: {
       flexDirection: "row",
