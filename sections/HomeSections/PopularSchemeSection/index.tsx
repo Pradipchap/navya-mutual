@@ -3,6 +3,7 @@ import { SectionWrapper } from "@/components/Wrappers/SectionWrapper";
 import { useOpenCreateInvestment } from "@/hooks/componentHooks/useOpenCreateInvestment";
 import { IScheme } from "@/interfaces/dataInterfaces";
 import { useSchemeStore } from "@/store/useSchemeStore";
+import { useRouter } from "expo-router";
 import React, { useEffect } from "react";
 import { Dimensions, FlatList, View, ActivityIndicator, Text } from "react-native";
 
@@ -11,11 +12,14 @@ const { width } = Dimensions.get("window");
 export const PopularSchemeSection = () => {
   const { schemes, fetchSchemes, loading, loadMore } = useSchemeStore();
   const { openCreateInvestmentModal } = useOpenCreateInvestment();
+  const router = useRouter();
   useEffect(() => {
     fetchSchemes();
   }, []);
 
-  const onActionPress = () => {};
+  const onActionPress = () => {
+    router.navigate("/(tabs)/schemes");
+  };
 
   const renderItem = ({ item }: { item: IScheme }) => {
     return (

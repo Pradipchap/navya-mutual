@@ -52,7 +52,7 @@ const getStyles = (theme: ReactNavigation.Theme) => {
       backgroundColor: theme.colors.notification,
       borderBottomStartRadius: 10,
       borderTopStartRadius: 10,
-      paddingHorizontal: "5%"
+      paddingHorizontal: "5%",
     },
     secondSection: {
       flexDirection: "row",

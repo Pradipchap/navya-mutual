@@ -1,13 +1,11 @@
 import { ScreenWrapper } from "@/components/Wrappers/ScreenWrapper";
-import { LatestInvestment } from "@/sections/HomeSections/LatestInvestment";
-import { PopularSchemeSection } from "@/sections/HomeSections/PopularSchemeSection";
+import { InvestmentList } from "@/sections/InvestmentSections/InvestmentList";
 import React from "react";
 
 export default function index() {
   return (
-    <ScreenWrapper>
-      <PopularSchemeSection />
-      <LatestInvestment />
+    <ScreenWrapper scrollEnabled={false}>
+      <InvestmentList />
     </ScreenWrapper>
   );
 }

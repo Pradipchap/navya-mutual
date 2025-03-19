@@ -1,38 +1,39 @@
 import { InvestmentCard } from "@/components/Cards/InvestmentCard";
+import { SchemeCard } from "@/components/Cards/SchemeCard";
 import { SectionWrapper } from "@/components/Wrappers/SectionWrapper";
-import { IPurchaseDetails } from "@/interfaces/dataInterfaces";
+import { IPurchaseDetails, IScheme } from "@/interfaces/dataInterfaces";
 import { useInvestmentStore } from "@/store/useInvestmentStore";
-import { useRouter } from "expo-router";
+import { useSchemeStore } from "@/store/useSchemeStore";
 import React, { useEffect } from "react";
-import { FlatList, ActivityIndicator, Text } from "react-native";
+import { FlatList, View, ActivityIndicator, Text } from "react-native";
 
-export const LatestInvestment = () => {
+export const InvestmentList = () => {
   const { investments, fetchInvestments, loading, loadMore } = useInvestmentStore();
-  const router = useRouter();
+
   useEffect(() => {
     fetchInvestments();
   }, []);
 
-  const onActionPress = () => {
-    router.navigate("/(tabs)/investments");
-  };
-
   const renderItem = ({ item }: { item: IPurchaseDetails }) => {
-    return <InvestmentCard onPress={() => {}} {...item} />;
+    return (
+      <View style={{ height: 120 }}>
+        <InvestmentCard onPress={() => {}} {...item} />
+      </View>
+    );
   };
 
   return (
-    <SectionWrapper title="Latest Investments" headerIcon="NextPage" headerText="View All" onActionPress={onActionPress}>
-      {loading && investments.length === 0 ? (
+    <SectionWrapper style={{ flex: 1 }} title="Investment History">
+      {loading && investments?.length === 0 ? (
         <ActivityIndicator size="large" color="#0000ff" style={{ marginVertical: 20 }} />
-      ) : investments.length === 0 ? (
-        <Text style={{ textAlign: "center", marginVertical: 20 }}>No investments available</Text>
+      ) : investments?.length === 0 ? (
+        <Text style={{ textAlign: "center", marginVertical: 20 }}>No mutual funds available</Text>
       ) : (
         <FlatList
-          scrollEnabled={false}
-          data={investments.slice(0, 5)}
-          renderItem={renderItem}
+          pagingEnabled
+          data={investments}
           onEndReached={loadMore}
+          renderItem={renderItem}
           keyExtractor={item => item.id.toString()}
           contentContainerStyle={{ paddingVertical: 10, gap: 10 }}
           showsHorizontalScrollIndicator={false}
