@@ -1,13 +1,12 @@
 import { Button } from "@/components/Buttons";
 import CustomInput from "@/components/Inputs/CustomInput";
-import { SectionWrapper } from "@/components/Wrappers/SectionWrapper";
 import { STATUS } from "@/constants/misc";
 import React from "react";
-import { StyleSheet } from "react-native";
+import { StyleSheet, View } from "react-native";
 
 export const CreateScheme = () => {
   return (
-    <SectionWrapper style={styles.container}>
+    <View style={styles.container}>
       <CustomInput label="Mutual Fund Scheme Name" placeholder="Enter scheme name" style={styles.input} required />
       <CustomInput
         label="Initial Price Per Unit"
@@ -24,13 +23,16 @@ export const CreateScheme = () => {
         inputMode="numeric"
       />
       <Button text="Create" iconProps={{ name: "Check" }} status={STATUS.IDLE} />
-    </SectionWrapper>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    gap: 20
+    width: "100%",
+    justifyContent: "flex-start",
+    alignItems: "flex-start",
+    gap: 10
   },
   input: {}
 });

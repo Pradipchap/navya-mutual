@@ -6,6 +6,7 @@ interface Props {
   onClose: () => void;
   children: ReactNode;
 }
+
 const ModalContent = ({ isVisible, onClose, children }: Props) => {
   const fadeAnim = useRef(new Animated.Value(0)).current;
   const scaleAnim = useRef(new Animated.Value(0.8)).current;
@@ -43,7 +44,7 @@ const ModalContent = ({ isVisible, onClose, children }: Props) => {
   return (
     <Modal transparent={true} visible={isVisible} onRequestClose={onClose}>
       <TouchableOpacity style={styles.overlay} activeOpacity={1} onPress={onClose}></TouchableOpacity>
-      <View style={{ height: "100%", flex: 1, justifyContent: "center", alignItems: "center" }}>
+      <View style={styles.modalWrapper}>
         <Animated.View style={[styles.modalContainer, { opacity: fadeAnim }]}>
           <Animated.View style={[styles.modalContent, { transform: [{ scale: scaleAnim }] }]}>{children}</Animated.View>
         </Animated.View>
@@ -57,12 +58,14 @@ const styles = StyleSheet.create({
     position: "absolute",
     height: "100%",
     top: 0,
-		width:"100%",
+    width: "100%",
     left: 0,
+    backgroundColor: "rgba(0, 0, 0, 0.5)"
+  },
+  modalWrapper: {
     flex: 1,
     justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "rgba(0, 0, 0, 0.5)"
+    alignItems: "center"
   },
   modalContainer: {
     width: "80%",
@@ -74,7 +77,9 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     borderRadius: 10,
     padding: 20,
-    alignItems: "center"
+    alignItems: "center",
+    flexGrow: 1,
+    flexShrink: 1
   }
 });
 

@@ -29,11 +29,9 @@ const getStyles = (theme: ReactNavigation.Theme) => {
   return StyleSheet.create({
     container: {
       marginBottom: 10,
-      flex: 1,
       width: "100%"
     },
     input: {
-      flex: 1,
       width: "100%",
       height: 50,
       borderColor: theme.colors.border,

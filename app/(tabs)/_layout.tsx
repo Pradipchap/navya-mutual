@@ -30,6 +30,22 @@ export default function TabLayout() {
           tabBarIcon: () => <Icon size={28} name="Home" />
         }}
       />
+
+      <Tabs.Screen
+        name="schemes"
+        options={{
+          title: "Scheme",
+          tabBarIcon: () => <Icon size={28} name="Home" />
+        }}
+      />
+
+      <Tabs.Screen
+        name="investments"
+        options={{
+          title: "Investments",
+          tabBarIcon: () => <Icon size={28} name="Home" />
+        }}
+      />
     </Tabs>
   );
 }

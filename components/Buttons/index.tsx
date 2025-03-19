@@ -18,7 +18,7 @@ export const Button = ({ text, iconProps, status, style, ...rest }: ICustomButto
 const getStyles = (theme: ReactNavigation.Theme) => {
   return StyleSheet.create({
     container: {
-      flex: 1,
+      width: "100%",
       flexDirection: "row",
       paddingHorizontal: 10,
       paddingVertical: 15,
