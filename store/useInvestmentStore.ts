@@ -1,42 +1,81 @@
-import { IPurchaseDetails } from "@/interfaces/dataInterfaces";
+import { INVESTMENTS } from "@/constants/endpoints";
+import {  IPurchaseDetails } from "@/interfaces/dataInterfaces";
 import { create } from "zustand";
 
-interface InvestmentStore {
+type Store = {
   investments: IPurchaseDetails[];
-  addInvestment: (investment: IPurchaseDetails) => void;
-  updateInvestment: (id: number, updatedInvestment: Partial<IPurchaseDetails>) => void;
-  removeInvestment: (id: number) => void;
-  getInvestmentById: (id: number) => IPurchaseDetails | undefined;
-}
+  loading: boolean;
+  error: string | null;
+  pageNo: number;
+  hasMore: boolean;
+  fetchInvestments: (page?: number) => Promise<void>;
+  addInvestment: (investment: IPurchaseDetails) => Promise<void>;
+  loadMore: () => void;
+};
 
-const useInvestmentStore = create<InvestmentStore>((set, get) => ({
+export const useInvestmentStore = create<Store>((set, get) => ({
   investments: [],
+  loading: false,
+  error: null,
+  pageNo: 1,
+  hasMore: true,
 
-  addInvestment: (investment) =>
-    set((state) => ({ investments: [...state.investments, investment] })),
+  fetchInvestments: async (page = 1) => {
+    if (get().loading) return;
 
-  updateInvestment: (id, updatedInvestment) =>
-    set((state) => ({
-      investments: state.investments.map((investment) =>
-        investment.id === id ? { ...investment, ...updatedInvestment } : investment
-      ),
-    })),
+    set({ loading: true, error: null });
 
-  removeInvestment: (id) =>
-    set((state) => ({
-      investments: state.investments.filter((investment) => investment.id !== id),
-    })),
+    try {
+      const response = await fetch(`${INVESTMENTS}?_page=${page}&_limit=5`);
+      if (!response.ok) {
+        throw new Error("Failed to fetch investments");
+      }
 
-  getInvestmentById: (id) => {
-    const { investments } = get();
-    return investments.find((investment) => investment.id === id);
+      const data: IPurchaseDetails[] = await response.json();
+
+      if (data.length === 0) {
+        set({ hasMore: false });
+        return;
+      }
+
+      set((state) => ({
+        investments: page === 1 ? data : [...state.investments, ...data],
+        pageNo: page,
+        hasMore: true,
+      }));
+    } catch (error) {
+      set({ error: "Failed to fetch investments" });
+    } finally {
+      set({ loading: false });
+    }
+  },
+
+  addInvestment: async (investment: IPurchaseDetails) => {
+    set({ loading: true, error: null });
+    try {
+      const response = await fetch(INVESTMENTS, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(investment),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to add investment");
+      }
+      const newInvestment: IPurchaseDetails = await response.json();
+      set((state) => ({
+        investments: [...state.investments, newInvestment],
+      }));
+    } catch (error) {
+      set({ error: "Failed to add investment" });
+    } finally {
+      set({ loading: false });
+    }
+  },
+
+  loadMore: () => {
+    if (get().hasMore) {
+      get().fetchInvestments(get().pageNo + 1);
+    }
   },
 }));
-
-export default useInvestmentStore;
-
-
-export const useInvestmentList = useInvestmentStore((state) => state.investments);
-export const useAddInvestment = useInvestmentStore((state) => state.addInvestment);
-export const useUpdateInvestment = useInvestmentStore((state) => state.updateInvestment);
-export const useDeleteInvestment = useInvestmentStore((state) => state.removeInvestment);

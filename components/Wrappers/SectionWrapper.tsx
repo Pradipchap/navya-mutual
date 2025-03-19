@@ -54,8 +54,8 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
   title: {
-    fontWeight: "bold",
-    fontSize: 20
+    fontWeight: "600",
+    fontSize: 19
   },
   actionContainer: {
     flexDirection: "row",

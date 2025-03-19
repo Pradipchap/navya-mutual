@@ -17,12 +17,6 @@
       "name": "raaasdfasm",
       "pricePerUnit": 1000,
       "minimumInvestment": 30
-    },
-    {
-      "id": "2861",
-      "name": "ram",
-      "pricePerUnit": 1000,
-      "minimumInvestment": 30
     }
   ],
   "investments": []

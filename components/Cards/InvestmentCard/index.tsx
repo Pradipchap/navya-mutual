@@ -4,7 +4,7 @@ import React, { useMemo } from "react";
 import { StyleSheet, Text } from "react-native";
 import { IPurchaseDetails } from "@/interfaces/dataInterfaces";
 
-export const InvestmentCard = ({ name, amount, id, units }: IPurchaseDetails) => {
+export const InvestmentCard = ({ name, amount, id, units,onPress }: IPurchaseDetails & { onPress: () => void }) => {
   const theme = useTheme();
   const styles = useMemo(() => getStyles(theme), [theme]);
   return (

@@ -26,7 +26,9 @@ export const SchemeCard = ({
       </View>
       <View style={styles.secondSection}>
         <View style={styles.nameContainer}>
-          <Text style={styles.name}>{name}</Text>
+          <Text numberOfLines={2} style={styles.name}>
+            {name}
+          </Text>
           <View style={styles.investmentContainer}>
             <Text>min investment</Text>
             <Text style={styles.minInvestment}>{minimumInvestment}</Text>
@@ -67,7 +69,8 @@ const getStyles = (theme: ReactNavigation.Theme) => {
       backgroundColor: theme.colors.primary,
       borderBottomStartRadius: 10,
       borderTopStartRadius: 10,
-      paddingHorizontal: "5%"
+      paddingHorizontal: "5%",
+      width: "20%"
     },
     secondSection: {
       flexDirection: "row",

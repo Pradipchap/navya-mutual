@@ -1,44 +1,55 @@
-import { create } from 'zustand';
+import { SCHEMES } from "@/constants/endpoints";
+import { IScheme } from "@/interfaces/dataInterfaces";
+import {create} from "zustand";
 
-export interface IScheme {
-  id: number;
-  name: string;
-  pricePerUnit: number;
-  minimumInvestment: number;
-}
 
-interface SchemeStore {
+
+type Store = {
   schemes: IScheme[];
-  addScheme: (scheme: IScheme) => void;
-  updateScheme: (id: number, updatedScheme: Partial<IScheme>) => void;
-  removeScheme: (id: number) => void;
-  getSchemeById: (id: number) => IScheme | undefined;
-}
+  loading: boolean;
+  error: string | null;
+  pageNo: number;
+  hasMore: boolean;
+  fetchSchemes: (page?: number) => Promise<void>;
+  loadMore: () => void;
+};
 
-const useSchemeStore = create<SchemeStore>((set, get) => ({
+export const useSchemeStore = create<Store>((set, get) => ({
   schemes: [],
-  addScheme: (scheme) => set((state) => ({ schemes: [...state.schemes, scheme] })),
-  updateScheme: (id, updatedScheme) =>
-    set((state) => ({
-      schemes: state.schemes.map((scheme) =>
-        scheme.id === id ? { ...scheme, ...updatedScheme } : scheme
-      ),
-    })),
+  loading: false,
+  error: null,
+  pageNo: 1,
+  hasMore: true, 
 
-  removeScheme: (id) =>
-    set((state) => ({
-      schemes: state.schemes.filter((scheme) => scheme.id !== id),
-    })),
+  fetchSchemes: async (page = 1) => {
+    if (get().loading) return;
+    set({ loading: true, error: null });
+    try {
+      const  response= await fetch(`${SCHEMES}?_page=${page}&_limit=5`);
+      if(!response.ok){
+        throw ""
+      }
+      const data:IScheme[]=await response.json()
+      // If no new data, set hasMore to false
+      if (data.length === 0) {
+        set({ hasMore: false });
+        return;
+      }
+      set((state) => ({
+        schemes: page === 1 ? data : [...state.schemes, ...data],
+        pageNo: page,
+        hasMore: true,
+      }));
+    } catch (error) {
+      set({ error: "Failed to fetch schemes" });
+    } finally {
+      set({ loading: false });
+    }
+  },
 
-  getSchemeById: (id) => {
-    const { schemes } = get();
-    return schemes.find((scheme) => scheme.id === id);
+  loadMore: () => {
+    if (get().hasMore) {
+      get().fetchSchemes(get().pageNo + 1);
+    }
   },
 }));
-
-export default useSchemeStore;
-
-export const useSchemeList=useSchemeStore(state=>state.schemes)
-export const useAddScheme=useSchemeStore(state=>state.addScheme)
-export const useDeleteScheme=useSchemeStore(state=>state.addScheme)
-export const useUpdateScheme=useSchemeStore(state=>state.updateScheme)
