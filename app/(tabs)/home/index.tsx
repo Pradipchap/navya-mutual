@@ -1,15 +1,21 @@
 import { InvestmentCard } from "@/components/Cards/InvestmentCard";
-import { SchemeCard } from "@/components/Cards/SchemeCard";
 import { ScreenWrapper } from "@/components/Wrappers/ScreenWrapper";
 import { SectionWrapper } from "@/components/Wrappers/SectionWrapper";
+import { useModalHandler } from "@/hooks/componentHooks/useModal";
 import { CreateScheme } from "@/sections/MutualSchemeSection/CreateScheme";
 import React from "react";
-import { Text } from "react-native";
+import { Text, TouchableOpacity } from "react-native";
 
 export default function index() {
+  const { handleOpen } = useModalHandler();
+  const handle = () => {
+    handleOpen(<Text>Pradip</Text>);
+  };
   return (
     <ScreenWrapper>
-      <Text>Hello home</Text>
+      <TouchableOpacity onPress={handle}>
+        <Text>Hello home</Text>
+      </TouchableOpacity>
       <CreateScheme />
       <SectionWrapper>
         <InvestmentCard name="Pradip Mutual Scheme" units={30} amount={300} schemeId={1} id={1} />
