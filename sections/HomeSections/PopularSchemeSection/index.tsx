@@ -23,7 +23,7 @@ export const PopularSchemeSection = () => {
 
   const renderItem = ({ item }: { item: IScheme }) => {
     return (
-      <View style={{ paddingHorizontal: 10, width: 0.9 * width }}>
+      <View style={{ paddingHorizontal: 10, width: 0.95 * width, alignSelf: "center", margin: "auto" }}>
         <SchemeCard
           onPress={() => {
             openCreateInvestmentModal(item);
@@ -43,12 +43,11 @@ export const PopularSchemeSection = () => {
       ) : (
         <FlatList
           horizontal
-          pagingEnabled
           data={schemes}
           onEndReached={loadMore}
           renderItem={renderItem}
           keyExtractor={item => item.id.toString()}
-          // contentContainerStyle={{ flex: 1, justifyContent: "center", alignItems: "stretch" }}
+          contentContainerStyle={{ gap: 5 }}
           showsHorizontalScrollIndicator={false}
           ListFooterComponent={loading ? <ActivityIndicator size="small" color="gray" style={{ marginLeft: 15 }} /> : null}
         />

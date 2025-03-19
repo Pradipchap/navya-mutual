@@ -53,10 +53,17 @@ export const useSchemeStore = create<Store>((set, get) => ({
         hasMore: result.next !== null,
       });
 
-      set((state) => ({
-        schemes: page === 1 ? result.data : [...state.schemes, ...result.data],
-        pageNo: page,
-      }));
+      set((state) => {
+
+        //to cancel out duplicate using set
+        const existingIds = new Set(state.schemes.map((s) => s.id));
+        const uniqueSchemes = result.data.filter((s) => existingIds.has(s.id));
+
+        return {
+          schemes: page === 1 ? result.data : [...state.schemes, ...uniqueSchemes],
+          pageNo: page,
+        };
+      });
     } catch (error) {
       set({ error: "Failed to fetch schemes" });
     } finally {

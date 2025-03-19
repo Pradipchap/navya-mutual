@@ -17,7 +17,7 @@ export const ShowStatus = ({ status, color, size, icon }: Props) => {
     case STATUS.FAILED:
       return <Icon name={iconName || "Cross"} size={iconSize} color={iconColor || "red"} />;
     case STATUS.LOADING:
-      return <ActivityIndicator />;
+      return <ActivityIndicator color={iconColor || "white"} />;
     case STATUS.SUCCESS:
       return <Icon name={iconName || "Check"} size={iconSize} color={iconColor || "green"} />;
     default:

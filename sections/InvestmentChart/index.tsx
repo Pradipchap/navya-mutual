@@ -48,9 +48,6 @@ export const InvestmentChart = ({ isPage }: { isPage?: boolean }) => {
         focusOnPress
         showValuesAsTooltipText
         toggleFocusOnPress
-        centerLabelComponent={() => {
-          return <View style={{ justifyContent: "center", alignItems: "center" }}></View>;
-        }}
       />
       <View style={styles.legendContainer}>
         {investments.slice(0, 4).map((investment, index) => (

@@ -10,7 +10,11 @@ export const Button = ({ text, iconProps, status, style, ...rest }: ICustomButto
   return (
     <TouchableOpacity style={[styles.container, style]} {...rest}>
       <Text style={styles.text}>{text}</Text>
-      <ShowStatus status={status} color={{ idle: "white" }} icon={{ idle: "" }} />
+      <ShowStatus
+        status={status}
+        color={{ idle: "white", success: "white", loading: "white", failed: "white" }}
+        icon={{ idle: "" }}
+      />
     </TouchableOpacity>
   );
 };

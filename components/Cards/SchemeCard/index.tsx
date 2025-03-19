@@ -58,7 +58,7 @@ const getStyles = (theme: ReactNavigation.Theme) => {
       borderColor: theme.colors.border,
       borderWidth: 1,
       elevation: 0.1,
-      minHeight: 100,
+      minHeight: 95,
       alignItems: "center",
       gap: "5%"
     },
@@ -74,7 +74,6 @@ const getStyles = (theme: ReactNavigation.Theme) => {
       backgroundColor: theme.colors.primary,
       borderBottomStartRadius: 10,
       borderTopStartRadius: 10,
-      paddingHorizontal: "5%",
       width: "20%"
     },
     secondSection: {
@@ -86,7 +85,7 @@ const getStyles = (theme: ReactNavigation.Theme) => {
       alignItems: "center"
     },
     name: {
-      fontSize: 17,
+      fontSize: 16,
       gap: "5%",
       fontWeight: "600"
     },

@@ -44,10 +44,15 @@ export const useInvestmentStore = create<InvestmentStore>((set, get) => ({
 
 
       //conditionally update investments
-      set((state) => ({
-        investments: page === 1 ? result.data : [...state.investments, ...result.data],
-        pageNo: page,
-      }));
+      //using set prevent duplicate elements
+      set((state) => {
+        const existingIds = new Set(state.investments.map((s) => s.id));
+        const uniqueInvestments = result.data.filter((s) => !existingIds.has(s.id));
+        return {
+          investments: page === 1 ? result.data : [...state.investments, ...uniqueInvestments],
+          pageNo: page,
+        };
+      });
     } catch (error) {
       set({ error: "Failed to fetch investments" });
     } finally {

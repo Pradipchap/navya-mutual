@@ -3,6 +3,7 @@ import { FlatList, View, ActivityIndicator, Text } from "react-native";
 import { SchemeCard } from "@/components/Cards/SchemeCard";
 import { SectionWrapper } from "@/components/Wrappers/SectionWrapper";
 import { IScheme } from "@/interfaces/dataInterfaces";
+import { useOpenCreateInvestment } from "@/hooks/componentHooks/useOpenCreateInvestment";
 
 interface ISchemeListProps {
   schemes: IScheme[];
@@ -11,11 +12,9 @@ interface ISchemeListProps {
 }
 
 export const SchemeListUI = ({ schemes, loading, loadMore }: ISchemeListProps) => {
-  const renderItem = ({ item }: { item: IScheme }) => (
-    <View style={{ height: 120 }}>
-      <SchemeCard onPress={() => {}} {...item} />
-    </View>
-  );
+  const { openCreateInvestmentModal } = useOpenCreateInvestment();
+
+  const renderItem = ({ item }: { item: IScheme }) => <SchemeCard onPress={() => openCreateInvestmentModal(item)} {...item} />;
 
   return (
     <SectionWrapper style={{ flex: 1 }} title="Latest Mutual Funds">
@@ -31,7 +30,7 @@ export const SchemeListUI = ({ schemes, loading, loadMore }: ISchemeListProps) =
           renderItem={renderItem}
           keyExtractor={item => item.id.toString()}
           contentContainerStyle={{ paddingVertical: 10, gap: 10 }}
-          showsHorizontalScrollIndicator={false}
+          showsVerticalScrollIndicator={false}
           ListFooterComponent={loading ? <ActivityIndicator size="small" color="gray" style={{ marginLeft: 15 }} /> : null}
         />
       )}
