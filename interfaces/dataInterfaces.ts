@@ -11,3 +11,7 @@ export interface IPurchase{
 	amount:number,
 	units:number
 }
+
+export interface IPurchaseDetails extends IPurchase{
+  name:string
+}
